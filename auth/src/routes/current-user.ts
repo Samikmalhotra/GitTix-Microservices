@@ -1,9 +1,10 @@
 import express from 'express'
+import {Request,Response} from 'express'
 
 const router = express.Router()
 
-router.get('/api/users/currentUser', (req, res) => {
+router.get('/api/users/currentUser', (req: Request, res: Response) => {
   res.json('Hello');
 })
 
-exports { router as currentUserRouter};
+export { router as currentUserRouter};
