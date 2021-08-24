@@ -18,6 +18,8 @@ router.post('/api/users/signup',[
   const {email,password} = req.body;
   res.json(email);
   console.log('Creating a user')
+
+  throw new Error('Database connecrion not established')
 })
 
 export { router as signUpRouter};
