@@ -16,3 +16,15 @@ spec:
       - name: auth-mongo
         image: mongo
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-mongo-svc
+spec:
+  selector:
+    app: auth-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
