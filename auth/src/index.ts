@@ -7,6 +7,7 @@ import {signOutRouter} from './routes/signout';
 import {signUpRouter} from './routes/signup';
 import { ErrorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
+import { DatabaseConnectionError } from './errors/database-connection-error';
 
 const app = express();
 app.use(express.json());
@@ -28,6 +29,7 @@ const start = async () => {
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error(error);
+    throw new DatabaseConnectionError();
   }
   app.listen(3333, () => {
     console.log('Listening on port 3333!!!')
