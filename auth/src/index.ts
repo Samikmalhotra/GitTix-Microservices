@@ -33,6 +33,9 @@ app.all('*', async() => {
 app.use(ErrorHandler);
 
 const start = async () => {
+  if(!process.env.JWT_KEY){
+    throw new Error('JWT_KEY must be defined')
+  }
   try {
     await mongoose.connect('mongodb://auth-mongo-svc:27017/auth');
     console.log('Connected to MongoDB');
