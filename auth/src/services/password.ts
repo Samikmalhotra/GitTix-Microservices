@@ -6,6 +6,6 @@ export class Password{
   }
 
   static compare(password: string, hash: string): boolean {
-    return bcrypt.compareSync(password, hash);
+    return bcrypt.compareSync(hash, password);
   }
 }
