@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React from 'react'
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import buildClient from '../api/build-client'
 
 const LandingPage: NextPage = (props) => {
