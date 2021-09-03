@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios'
+import {useRequest} from '../../hooks/use-request'
 
 const Signup = () => {
-  const [email,setEmail] = useState('');
-  const [password,setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [email,setEmail] = useState<string | null>('');
+  const [password,setPassword] = useState<string | null>('');
+  const [errors, setErrors] = useState<any | null>([]);
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,14 +30,14 @@ const Signup = () => {
     <div className="form-group">
       <label htmlFor="email">Email address</label>
       <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
-      <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small id="emailHelp" className="form-text text-muted">We will never share your email with anyone else.</small>
     </div>
     <div className="form-group">
       <label htmlFor="password">Password</label>
       <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)}/>
     </div>
     
-    {errors.map(err=> {
+    {errors.map((err:any)=> {
     return(
     <div className="alert alert-danger" key={err.message}>
       {err && err.message}
