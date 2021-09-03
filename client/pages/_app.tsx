@@ -3,6 +3,7 @@ import type { AppContext, AppProps } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.css'
 import buildClient from '../api/build-client'
 import { Fragment } from 'react'
+import Header from '../components/header'
 
 interface User{
   email: string,
@@ -15,8 +16,8 @@ interface AppPropsExtension extends AppProps {
 const App = ({ Component, pageProps, user }: AppPropsExtension ) => {
   return (
     <Fragment>
-    <h1>Header! {user?.email}</h1>
-    <Component {...pageProps} />
+      <Header currentUser={user} />
+      <Component {...pageProps} />
     </Fragment>
   )
 }
