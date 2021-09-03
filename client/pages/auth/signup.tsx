@@ -1,26 +1,35 @@
 import { useState } from 'react';
 import axios from 'axios'
-import {useRequest} from '../../hooks/use-request'
+import useRequest from '../../hooks/use-request'
 
 const Signup = () => {
   const [email,setEmail] = useState<string | null>('');
   const [password,setPassword] = useState<string | null>('');
-  const [errors, setErrors] = useState<any | null>([]);
+  const requestProps = {
+    url: '/api/users/signup',
+    method: 'post',
+    body: {
+      email, password
+    }
+  }
+  const {doRequest, errors} = useRequest(requestProps)
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email,password);
-    
-    try {
-      const res = await axios.post('/api/users/signup', {
-      email, password
-      })
 
-      console.log(res.data)
-    } catch (error:any) {
-      console.error(error.response.data)
-      setErrors(error.response.data.errors)
-    }
+    doRequest();
+    
+    // try {
+    //   const res = await axios.post('/api/users/signup', {
+    //   email, password
+    //   })
+
+    //   console.log(res.data)
+    // } catch (error:any) {
+    //   console.error(error.response.data)
+    //   setErrors(error.response.data.errors)
+    // }
     
   }
 
@@ -37,11 +46,12 @@ const Signup = () => {
       <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)}/>
     </div>
     
-    {errors.map((err:any)=> {
+    {/* {errors.map((err:any)=> {
     return(
     <div className="alert alert-danger" key={err.message}>
       {err && err.message}
-      </div>  )})}
+      </div>  )})} */}
+      {errors}
                            
     <button type="submit" className="btn btn-primary">Submit</button>
   </form>

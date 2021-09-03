@@ -1,5 +1,5 @@
 import axios,{ AxiosStatic }  from 'axios';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 interface requestProps{
   url: string;
@@ -7,7 +7,7 @@ interface requestProps{
   body: any;
 }
 
-let axios: AxiosStatic | any
+// let axios: AxiosStatic | any
 
 // declare global{
 //   namespace axios{
@@ -26,10 +26,17 @@ const useRequest = (props:   requestProps) => {
   const doRequest = async() => {
     try {
       const res = await axios[method](url,body)
+      console.log(res.data)
       return res.data
     } catch (error:any) {
       setErrors(
-        error.response.data.errors
+        <Fragment>
+        {error.response.data.errors.map((err:any)=> {
+          return(
+          <div className="alert alert-danger" key={err.message}>
+            {err && err.message}
+            </div>  )})}
+            </Fragment>
       )
     }
   };
