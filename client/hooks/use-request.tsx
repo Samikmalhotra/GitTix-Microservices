@@ -1,10 +1,12 @@
-import axios,{ AxiosStatic }  from 'axios';
+import axios,{ AxiosResponse, AxiosStatic }  from 'axios';
 import { Fragment, useState } from 'react';
+import Router from 'next/router'
 
 interface requestProps{
   url: string;
   method: string;
   body: any;
+  onSuccess(prop: any):void
 }
 
 // let axios: AxiosStatic | any
@@ -19,15 +21,19 @@ interface requestProps{
 
 const useRequest = (props:   requestProps) => {
 
-  const {url,method,body} = props;
+  const {url,method,body, onSuccess} = props;
 
   const [errors,setErrors] = useState<any | null>(null);
 
   const doRequest = async() => {
     try {
-      const res = await axios[method](url,body)
-      console.log(res.data)
-      return res.data
+      const res: AxiosResponse = await axios[method](url,body);
+      
+      if(onSuccess){
+        onSuccess(res.data)
+      }
+
+      return res.data;
     } catch (error:any) {
       setErrors(
         <Fragment>
@@ -45,4 +51,5 @@ const useRequest = (props:   requestProps) => {
 
 }
 
-export default useRequest
+export { useRequest };
+export type { requestProps };
