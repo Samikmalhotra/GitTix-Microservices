@@ -2,7 +2,7 @@ import axios,{ AxiosResponse, AxiosStatic }  from 'axios';
 import { Fragment, useState } from 'react';
 import Router from 'next/router'
 
-interface requestProps{
+interface RequestProps{
   url: string;
   method: string;
   body: any;
@@ -19,7 +19,7 @@ interface requestProps{
 //   }
 // }
 
-const useRequest = (props:   requestProps) => {
+const useRequest = (props: RequestProps) => {
 
   const {url,method,body, onSuccess} = props;
 
@@ -52,4 +52,4 @@ const useRequest = (props:   requestProps) => {
 }
 
 export { useRequest };
-export type { requestProps };
+export type { RequestProps };

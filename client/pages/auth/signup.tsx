@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios'
-import {useRequest, requestProps} from '../../hooks/use-request'
+import {useRequest, RequestProps} from '../../hooks/use-request'
 import { useRouter } from 'next/router';
 
 const Signup = () => {
   const router = useRouter();
   const [email,setEmail] = useState<string | null>('');
   const [password,setPassword] = useState<string | null>('');
-  const requestProps: requestProps = {
+  const requestProps: RequestProps = {
     url: '/api/users/signup',
     method: 'post',
     body: {
