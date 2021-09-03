@@ -4,16 +4,23 @@ import axios from 'axios'
 const Signup = () => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email,password);
     
-    const res = await axios.post('/api//users/signup', {
+    try {
+      const res = await axios.post('/api/users/signup', {
       email, password
-    })
+      })
 
-    console.log(res.data)
+      console.log(res.data)
+    } catch (error:any) {
+      console.error(error.response.data)
+      setErrors(error.response.data.errors)
+    }
+    
   }
 
   return (
@@ -28,6 +35,13 @@ const Signup = () => {
       <label htmlFor="password">Password</label>
       <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)}/>
     </div>
+    
+    {errors.map(err=> {
+    return(
+    <div className="alert alert-danger" key={err.message}>
+      {err && err.message}
+      </div>  )})}
+                           
     <button type="submit" className="btn btn-primary">Submit</button>
   </form>
   )
