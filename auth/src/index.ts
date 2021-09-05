@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DatabaseConnectionError } from './errors/database-connection-error';
+import { DatabaseConnectionError } from '@samikmalhotra/microservices-helper';
 import { app } from './app';
 
 const start = async () => {

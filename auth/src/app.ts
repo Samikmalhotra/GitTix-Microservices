@@ -5,8 +5,8 @@ import {currentUserRouter} from './routes/current-user';
 import {signInRouter} from './routes/signin';
 import {signOutRouter} from './routes/signout';
 import {signUpRouter} from './routes/signup';
-import { ErrorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import { ErrorHandler } from '@samikmalhotra/microservices-helper';
+import { NotFoundError } from '@samikmalhotra/microservices-helper';
 
 const app = express();
 
