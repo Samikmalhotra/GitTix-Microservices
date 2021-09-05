@@ -7,7 +7,7 @@ interface Props {
   currentUser?: object | null
 }
 
-const LandingPage: NextPage<Props> = ({currentUser}) => {
+const LandingPage: NextPage<Props> = ({currentUser}: any) => {
   return currentUser ? <h1>You are Signed in</h1> : <h1>You are not signed in</h1>
 }
 
