@@ -59,5 +59,14 @@ it('returns an error if an invalid price is provided', async()=>{
 })
 
 it('creates a ticket with valid inputs', async()=>{
-  
+  // add in a check to make sure ticket was saved
+
+  await request(app)
+    .post('/api/tickets')
+    .set('Cookie', signinTest())
+    .send({
+      title: 'asdfg',
+      price: 20
+    })
+    .expect(201);
 })

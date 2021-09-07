@@ -14,7 +14,7 @@ router.post('/api/tickets', requireAuth, [
     .withMessage('Price must be greater than 0')
 
 ], validateRequest, (req:Request, res:Response)=>{
-  res.sendStatus(200);
+  res.sendStatus(201);
 })
 
 export {router as createTicketRouter}
