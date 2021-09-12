@@ -1,16 +1,16 @@
+import { NotFoundError } from '@samikmalhotra/microservices-helper';
 import express, {Request, Response} from 'express';
 import {Ticket} from '../models/ticket';
 
 const router = express.Router();
 
 router.get('/api/tickets/:id', async (req: Request, res: Response) => {
-  const ticket = await Ticket.findById(req.params.id);
-
+  const ticket = await Ticket.find({_id: req.params.id});
   if (!ticket) {
-    throw new Error('Ticket not found');
+    throw new NotFoundError();
   }
 
   res.send(ticket);
-}
+});
 
-export {router as showTicketRouter};
+export {router as showTicketsRouter};

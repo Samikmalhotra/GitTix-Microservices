@@ -2,10 +2,13 @@ import request from 'supertest';
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
 import { signinTest } from '../../test/setup';
+import mongoose from 'mongoose';
 
 it('returns a 404 if the ticket is not found', async() => {
+  const id = new mongoose.Types.ObjectId().toHexString();
+  console.log(id);
   await request(app)
-    .get('/api/tickets/dadfa')
+    .get('/api/tickets/'+id)
     .send()
     .expect(404);
 })
