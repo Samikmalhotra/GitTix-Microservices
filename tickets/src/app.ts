@@ -3,7 +3,8 @@ import 'express-async-errors'
 import cookieSession from 'cookie-session';
 import { ErrorHandler, NotFoundError, currentUser } from '@samikmalhotra/microservices-helper';
 import { createTicketRouter } from './routes/new';
-import {showTicketsRouter} from './routes/show';
+import {showTicketRouter} from './routes/show';
+import { indexTicketRouter } from './routes';
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.use(
 )
 app.use(currentUser);
 app.use(createTicketRouter)
-app.use(showTicketsRouter)
+app.use(showTicketRouter)
+app.use(indexTicketRouter)
 
 app.all('*', async() => {
   throw new NotFoundError();
