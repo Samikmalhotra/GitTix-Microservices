@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tikets-svc
+  name: tickets-svc
 spec: 
   selector: 
-    app: tikets
+    app: tickets
   ports:
-    - name: tikets
+    - name: tickets
       protocol: TCP  
       port: 3333
       targetPort: 3333     

@@ -14,6 +14,10 @@ spec:
             backend:
               serviceName: auth-svc
               servicePort: 3333
+          - path: /api/tickets/?(.*)
+            backend:
+              serviceName: tickets-svc
+              servicePort: 3334
           - path: /?(.*)
             backend:
               serviceName: client-svc
