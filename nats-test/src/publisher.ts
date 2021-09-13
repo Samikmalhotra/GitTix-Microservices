@@ -12,15 +12,15 @@ stan.on('connect', () => {
   //   process.exit();
   // });
 
-  // // publish a message
-  // const data = JSON.stringify({
-  //   id: '123',
-  //   title: 'concert',
-  //   price: 20
-  // });
+  // publish a message
+  const data = JSON.stringify({
+    id: '123',
+    title: 'concert',
+    price: 20
+  });
 
-  // stan.publish('ticket:created', data, () => {
-  //   console.log('Event published');
-  //   stan.close();
-  // });
+  stan.publish('ticket:created', data, () => {
+    console.log('Event published');
+    stan.close();
+  });
 });
