@@ -16,6 +16,9 @@ router.delete('/api/orders/:orderId', async(req:Request, res:Response)=>{
   order.status = OrderStatus.Cancelled;
   await order.save();
 
+  // publish an event saying this was cancelled!
+  
+
   res.status(204).json(order);
 });
 
