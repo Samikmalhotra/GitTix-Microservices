@@ -59,7 +59,6 @@ router.post('/api/orders',requireAuth, [
 
   res.status(201).json(order)
 
-  res.json({});
 });
 
 export {router as newOrderRouter}
