@@ -13,9 +13,7 @@ router.get('/api/orders/:orderId', async(req:Request, res:Response)=>{
     throw new NotAuthorizedError();
   }
 
-  }
-
-  res.json({});
+  res.json(order);
 });
 
 export {router as showOrderRouter}
