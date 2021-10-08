@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    
     "@samikmalhotra/microservices-helper": "1.0.6",
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-session": "^2.0.43",
