@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@samikmalhotra/microservices-helper": "^1.0.5",
+    "@samikmalhotra/microservices-helper": "1.0.6",
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-session": "^2.0.43",
     "@types/express": "^4.17.13",
@@ -32,6 +32,7 @@
     "express-validator": "^6.12.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.2",
+    "mongoose-update-if-current": "^1.4.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
   },
