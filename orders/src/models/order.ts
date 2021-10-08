@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
-import {OrderStatus} from '@samikmalhotra/microservices-helper'
 import {TicketDoc} from './ticket'
-
-export {OrderStatus} 
+import { OrderStatus } from '@samikmalhotra/microservices-helper';
 
 interface OrderAttrs {
   userId: string;
@@ -56,4 +54,4 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
 
 const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
 
-export {Order}
+export {Order, OrderStatus}

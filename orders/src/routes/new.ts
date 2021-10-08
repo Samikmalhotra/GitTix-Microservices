@@ -1,8 +1,8 @@
 import express, {Request, Response} from 'express'
-import { NotFoundError, requireAuth, validateRequest, OrderStatus, BadRequestError } from '@samikmalhotra/microservices-helper';
+import { NotFoundError, requireAuth, validateRequest, BadRequestError } from '@samikmalhotra/microservices-helper';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
-import { Order } from '../models/order';
+import { Order, OrderStatus } from '../models/order';
 import { OrderCreatedPublisher } from '../events/publishers/order-created-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
