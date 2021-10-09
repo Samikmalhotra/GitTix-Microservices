@@ -21,7 +21,7 @@ const setup = async() => {
 
   // create a fake message object
   // @ts-ignore
-  const msg:Message = () => {
+  const msg:Message = {
     ack: jest.fn()
   }
 
@@ -50,5 +50,6 @@ it('acks the message', async()=>{
   await listener.onMessage(data,msg);
 
   // write assertions to make sure a ticket was created
+  // @ts-ignore
   expect(msg.ack).toHaveBeenCalled()
 })
