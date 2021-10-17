@@ -8,7 +8,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SETTINGS = 15*60;
+const EXPIRATION_WINDOW_SETTINGS = 0.5*60;
 
 router.post('/api/orders',requireAuth, [
   body('ticketId').not().isEmpty().withMessage('TicketId must be provided')
